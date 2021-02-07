@@ -74,15 +74,36 @@ export default {
         this.isFocus2 = false;
       }
     },
-    toLogin(){
-      if(this.username === '' || this.password === ''){
-        this.$message.error('用户名或密码不可为空！');
+    toLogin() {
+      if (this.username === "" || this.password === "") {
+        this.$message.error("用户名或密码不可为空！");
         return false;
       }
+      let that = this;
+      // 发送登录请求
       this.$request({
-        url: 'http://localhost:3000'
-      })
-    }
+        url: "/login",
+        method: "post",
+        data: {
+          username: this.username,
+          password: this.password,
+        },
+      }).then((res) => {
+        if (res.meta.status === 200) {
+          this.$message({
+            message: "登录成功！",
+            type: "success",
+            duration: "1000",
+            onClose() {
+              window.sessionStorage.setItem("token", res.data.token);
+              that.$router.push("/home");
+            },
+          });
+        } else {
+          this.$message.error("用户名或密码不正确！");
+        }
+      });
+    },
   },
 };
 </script>
