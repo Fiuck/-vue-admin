@@ -77,7 +77,11 @@ export default {
     toLogin(){
       if(this.username === '' || this.password === ''){
         this.$message.error('用户名或密码不可为空！');
+        return false;
       }
+      this.$request({
+        url: 'http://localhost:3000'
+      })
     }
   },
 };
