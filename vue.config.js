@@ -7,6 +7,7 @@ module.exports = {
         components: path.resolve("src/components"),
         assets: path.resolve("src/assets"),
         views: path.resolve("src/views"),
+        network: path.resolve('src/network')
       },
     },
   },

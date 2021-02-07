@@ -40,7 +40,8 @@
             </div>
           </div>
           <a href="#">Forgot Password?</a>
-          <input type="submit" class="btn" value="Login" />
+          <!-- <input type="submit" class="btn" value="Login" /> -->
+          <button type="button" class="btn" @click="toLogin">Login</button>
         </form>
       </div>
     </div>
@@ -73,6 +74,11 @@ export default {
         this.isFocus2 = false;
       }
     },
+    toLogin(){
+      if(this.username === '' || this.password === ''){
+        this.$message.error('用户名或密码不可为空！');
+      }
+    }
   },
 };
 </script>
@@ -94,7 +100,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30rem;
-  padding: 0 2rem;
+  padding: -2px 2rem;
 }
 .img {
   display: flex;
@@ -196,7 +202,7 @@ form h2 {
   outline: none;
   background: none;
   padding: 0.5rem 0.7rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #555;
   font-family: "Roboto", sans-serif;
 }
