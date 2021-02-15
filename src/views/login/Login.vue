@@ -96,7 +96,7 @@ export default {
             duration: "1000",
             onClose() {
               window.sessionStorage.setItem("token", res.data.token);
-              that.$router.push("/home");
+              that.$router.push("/");
             },
           });
         } else {

@@ -8,6 +8,8 @@ export function request(config) {
 
   instance.interceptors.request.use(
     (config) => {
+      // console.log(config);
+      if(config.url !== '/login') config.headers.Authorization = window.sessionStorage.getItem('token')
       return config;
     },
     (error) => {}

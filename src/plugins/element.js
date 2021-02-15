@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Button,Message,Container,Header,Aside,Main } from 'element-ui'
-import { Menu,Submenu,MenuItemGroup,MenuItem} from 'element-ui'
+import { Menu,Submenu,MenuItemGroup,MenuItem,Breadcrumb,BreadcrumbItem,Scrollbar,Tooltip,Tag } from 'element-ui'
 
 Vue.use(Button)
 /**
@@ -14,5 +14,10 @@ Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItemGroup)
 Vue.use(MenuItem)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Scrollbar)
+Vue.use(Tooltip)
+Vue.use(Tag)
 
 Vue.prototype.$message = Message;

@@ -1,23 +1,36 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+/** layout */
+import layout from 'components/content/layout'
+
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    redirect: "/login",
-  },
-  {
     name: "login",
     path: "/login",
-    component: () => import("components/content/Login"),
+    component: () => import("views/login/Login"),
   },
   {
-    name: "home",
-    path: "/home",
-    component: () => import("components/content/Home"),
+    path: "/",
+    component: layout,
+    children: [
+      {
+        name: 'dashboard',
+        path: '/',
+        component: () => import("views/dashboard/Dashboard"),
+        meta: { title: '首页'}
+      },
+      {
+        path: 'users',
+        name: '/users',
+        component: () => import("views/user/Users"),
+        meta: { title: '用户列表'}
+      }
+    ]
   },
+  
 ];
 
 const router = new VueRouter({
@@ -25,6 +38,12 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 // 路由导航守卫，判断登录权限
 router.beforeEach((to, from, next) => {
