@@ -6,6 +6,7 @@
     <el-container>
       <el-header height="50px">
         <nav-bar></nav-bar>
+        <tab-tag></tab-tag>
       </el-header>
       <el-main>
         <app-main></app-main>
@@ -18,9 +19,10 @@
 import SideBar from "components/content/sidebar/SideBar";
 import NavBar from 'components/content/navbar/NavBar'
 import AppMain from 'components/content/layout/AppMain'
+import TabTag from 'components/common/TabTag'
 export default {
   name: "Layout",
-  components: { SideBar,NavBar,AppMain },
+  components: { SideBar,NavBar,AppMain,TabTag },
 };
 </script>
 
@@ -38,5 +40,8 @@ export default {
   background-color: #304156;
   color: #333;
   line-height: 200px;
+}
+.el-main {
+  margin-top: 34px;
 }
 </style>

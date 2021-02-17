@@ -97,6 +97,11 @@ export default {
             onClose() {
               window.sessionStorage.setItem("token", res.data.token);
               that.$router.push("/");
+              window.sessionStorage.setItem('selectMenu', null)
+              window.sessionStorage.setItem('menuList', JSON.stringify([{
+                authName: "首页",
+                path: "/",
+              }]))
             },
           });
         } else {

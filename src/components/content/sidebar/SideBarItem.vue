@@ -41,6 +41,10 @@ export default {
   methods: {
     clickMenu(item){
       this.$store.dispatch('app/selectMenu', item)
+      let menuList = JSON.parse(window.sessionStorage.getItem('menuList'));
+      let result = menuList.findIndex(val => val.path === item.path);
+      if(result === -1) menuList.push(item)
+      window.sessionStorage.setItem('menuList', JSON.stringify(menuList))
     }
   }
 };

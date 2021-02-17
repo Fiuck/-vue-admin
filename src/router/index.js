@@ -23,10 +23,52 @@ const routes = [
         meta: { title: '首页'}
       },
       {
-        path: 'users',
-        name: '/users',
+        path: '/users',
+        name: 'users',
         component: () => import("views/user/Users"),
         meta: { title: '用户列表'}
+      },
+      {
+        path: '/roles',
+        name: 'roles',
+        component: () => import('views/roles/Roles'),
+        meta: { title: '角色管理' }
+      },
+      {
+        path: '/rights',
+        name: 'rights',
+        component: () => import('views/roles/rights/Rights'),
+        meta: { title: '权限列表' }
+      },
+      {
+        path: '/goods',
+        name: 'goods',
+        component: () => import('views/goods/Goods'),
+        meta: { title: '商品列表' }
+      },
+      {
+        path: '/params',
+        name: 'params',
+        component: () => import('views/goods/params/Params'),
+        meta: { title: '分类参数' }
+      },
+      {
+        path: '/categories',
+        name: 'categories',
+        component: () => import('views/goods/categories/Categories'),
+        meta: { title: '商品分类'}
+      },
+      {
+        path: '/orders',
+        name: 'orders',
+        component: () => import('views/orders/Orders'),
+        meta: { title: '订单列表' } 
+      },
+      {
+        path: '/reports',
+        name: 'reports',
+        component: () => import('views/reports/Reports'),
+        meta: { title: '数据报表'}
       }
     ]
   },
