@@ -9,7 +9,8 @@ export function request(config) {
   instance.interceptors.request.use(
     (config) => {
       // console.log(config);
-      if(config.url !== '/login') config.headers.Authorization = window.sessionStorage.getItem('token')
+      if (config.url !== "/login")
+        config.headers.Authorization = window.sessionStorage.getItem("token");
       return config;
     },
     (error) => {}
@@ -17,6 +18,12 @@ export function request(config) {
 
   instance.interceptors.response.use(
     (response) => {
+      if (response.data.meta.status !== 200) {
+        this.$message({
+          type: "error",
+          message: response.data.meta.msg,
+        });
+      }
       return response.data;
     },
     (error) => {}
